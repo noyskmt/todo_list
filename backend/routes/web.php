@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/','TodosController@index');
+use App\Http\Controllers\TodosController;
+Route::get('/', [TodosController::class, 'index'])->name('Todos');
+// Route::resource('todos','TodosController');
+Route::resource('todoos', TodosController::class);
 
 Route::get('/test', function() {
     return view('test');
