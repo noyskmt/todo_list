@@ -17,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/','TodosController@index');
 use App\Http\Controllers\TodosController;
+// Route::get('/','TodosController@index');
 Route::get('/', [TodosController::class, 'index'])->name('Todos');
-// Route::resource('todos','TodosController');
-Route::resource('todoos', TodosController::class);
+Route::resource('todos', TodosController::class);
 
 Route::get('/test', function() {
     return view('test');

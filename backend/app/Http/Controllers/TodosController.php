@@ -8,14 +8,25 @@ use App\Models\Todo;
 class TodosController extends Controller
 {
     public function index() {
+        // todosテーブルのすべてのデータを取得する処理
         $todos = Todo::all();
-        return view('todos.index')->with('todos',$todos);
+        // return view('todosフォルダの中のindex.blade.phpを参照している')->with('todos', $todos);
+
+        // with関数はbladeファイルに変数を渡す
+        return view('todos.index')->with(['todos' => $todos]);
     }
 
     public function store(Request $request) {
+        // インスタンスを作成
         $todo = new Todo();
+
+        // データの中身を追加する
+        // \Log::debug($request);
         $todo->body = $request->body;
+
+        // データを追加したものを保存
         $todo->save();
+
         return redirect('/');
     }
 
@@ -28,7 +39,7 @@ class TodosController extends Controller
         return view('todos.edit')->with('todo',$todo);
     }
 
-    public function update(Request $request,todo $todo) {
+    public function update(Request $request, todo $todo) {
         $todo->body = $request->body;
         $todo->save();
         return redirect('/');
