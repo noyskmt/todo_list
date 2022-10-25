@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
 
 class TodosController extends Controller
 {
@@ -27,12 +28,12 @@ class TodosController extends Controller
         // データを追加したものを保存
         $todo->save();
 
-        return redirect('/');
+        return redirect('/todos');
     }
 
     public function destroy(todo $todo) {
         $todo->delete();
-        return redirect('/');
+        return redirect('/todos');
     }
 
     public function edit(todo $todo) {
@@ -42,6 +43,9 @@ class TodosController extends Controller
     public function update(Request $request, todo $todo) {
         $todo->body = $request->body;
         $todo->save();
-        return redirect('/');
+        return redirect('/todos');
     }
+
+    $user = Auth::user();
+    $id = Auth::id();
 }
