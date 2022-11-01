@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Log;
 class TodosController extends Controller
 {
     public function index() {
+        $id = Auth::id();
         // todosテーブルのすべてのデータを取得する処理
-        $todos = Todo::all();
+        $todos = Todo::where('user_id',$id)->get();
         // return view('todosフォルダの中のindex.blade.phpを参照している')->with('todos', $todos);
 
         $user = Auth::user();
