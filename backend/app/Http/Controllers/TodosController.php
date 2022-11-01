@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TodosController extends Controller
 {
@@ -13,6 +14,10 @@ class TodosController extends Controller
         $todos = Todo::all();
         // return view('todosフォルダの中のindex.blade.phpを参照している')->with('todos', $todos);
 
+        $user = Auth::user();
+        $id = Auth::id();
+        // dump($id);
+        
         // with関数はbladeファイルに変数を渡す
         return view('todos.index')->with(['todos' => $todos]);
     }
@@ -22,6 +27,8 @@ class TodosController extends Controller
         $todo = new Todo();
 
         // データの中身を追加する
+        $id = Auth::id();
+
         // \Log::debug($request);
         $todo->body = $request->body;
 
@@ -45,7 +52,4 @@ class TodosController extends Controller
         $todo->save();
         return redirect('/todos');
     }
-
-    $user = Auth::user();
-    $id = Auth::id();
 }
