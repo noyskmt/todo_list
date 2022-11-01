@@ -31,7 +31,8 @@ class TodosController extends Controller
 
         // \Log::debug($request);
         $todo->body = $request->body;
-
+        $todo->user_id = Auth::id();
+        
         // データを追加したものを保存
         $todo->save();
 
