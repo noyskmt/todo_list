@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class TodosController extends Controller
 {
@@ -24,11 +24,16 @@ class TodosController extends Controller
     }
 
     public function store(Request $request) {
+
         // インスタンスを作成
         $todo = new Todo();
 
         // データの中身を追加する
         $id = Auth::id();
+
+        $request->validate([
+            'body' => 'required',
+        ]);
 
         // \Log::debug($request);
         $todo->body = $request->body;

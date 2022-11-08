@@ -17,6 +17,9 @@
       <div class="form-group">
         <label >やることを追加してください</label>
         <input type="text" name="body" class="form-control" placeholder="todo list" style="max-width:1000px;">
+        @if ($errors->any())
+          <p class="error-message">・bodyは必須です</p>
+        @endif
       </div>
       <button type="submit" class="btn btn-primary">追加する</button>
     </form>
