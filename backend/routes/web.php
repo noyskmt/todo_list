@@ -26,6 +26,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('sample', 'todosController@postValidates');
+// Route::post('sample', 'FormController@postValidates');
 
 require __DIR__.'/auth.php';

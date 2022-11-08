@@ -35,7 +35,6 @@ class TodosController extends Controller
             'body' => 'required',
         ]);
 
-        // \Log::debug($request);
         $todo->body = $request->body;
         $todo->user_id = Auth::id();
         
