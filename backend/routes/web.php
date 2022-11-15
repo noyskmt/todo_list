@@ -16,7 +16,12 @@ use App\Http\Controllers\TodosController;
 */
 
 
-Route::resource('todos', TodosController::class);
+// Route::resource('todos', TodosController::class);
+
+Route::get('/todos', [TodosController::class, 'index']);
+Route::get('/todos/store', [TodosController::class, 'store'])->name('todos.store');
+Route::get('/todos/edit', [TodosController::class, 'edit'])->name('todos.edit');
+
 
 Route::get('/', function () {
     return view('welcome');
