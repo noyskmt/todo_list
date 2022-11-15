@@ -32,10 +32,10 @@ class TodosController extends Controller
         $id = Auth::id();
 
         $request->validate([
-            'body' => 'required|max:15',
+            'body' => 'required | max:15',
         ],[
-            'body.required' => '・bodyは必須です',
-            'body.max' => '・15文字以内でご入力ください', 
+            'body.required' => 'bodyは必須です',
+            'body.max' => '15文字以内でご入力ください', 
         ]);
 
         $todo->body = $request->body;

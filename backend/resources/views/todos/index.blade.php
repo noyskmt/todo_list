@@ -17,9 +17,22 @@
       <div class="form-group">
         <label >やることを追加してください</label>
         <input type="text" name="body" class="form-control" placeholder="todo list" style="max-width:1000px;">
-        @if ($errors->any())
-          <p class="error-message">・bodyは必須です</p>
-        @endif
+        @error('body')
+          <li>{{$message}}</li>
+        @enderror
+
+        <!-- @foreach ($errors->get('body.*') as $messages)
+          @foreach ($messages as $message)
+            <div class="error-txt">{{ $message }}</div>
+          @endforeach
+        @endforeach -->
+        
+        <!-- @if ($errors->any())
+          <p class="error-message">
+            ・bodyは必須です
+            <br>・15文字以内で入力をお願いします</br>
+          </p>
+        @endif -->
       </div>
       <button type="submit" class="btn btn-primary">追加する</button>
     </form>
