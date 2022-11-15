@@ -18,6 +18,7 @@ use App\Http\Controllers\TodosController;
 
 // Route::resource('todos', TodosController::class);
 
+// Route::get('/アクセスしたいURL', [コントローラー名::class, '関数名(ファンクション名)'])->name('index.blade内のroute名');
 Route::get('/todos', [TodosController::class, 'index']);
 Route::get('/todos/store', [TodosController::class, 'store'])->name('todos.store');
 Route::get('/todos/edit', [TodosController::class, 'edit'])->name('todos.edit');
