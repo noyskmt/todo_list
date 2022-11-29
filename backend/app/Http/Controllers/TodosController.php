@@ -61,4 +61,9 @@ class TodosController extends Controller
         $todo->save();
         return redirect('/todos');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
