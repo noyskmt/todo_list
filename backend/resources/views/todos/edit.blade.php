@@ -13,10 +13,9 @@
     <div class="container" style="margin-top:50px;">
     <h1>Todoリスト更新</h1>
 
-    <form action="{{ url('/todos', $todo) }}" method="post">
-      {{csrf_field()}}
-      {{ method_field('patch')}}
-  <div class="form-group">
+    <form action="{{ route('todos.update', $todo->id) }}" method="post">
+      @csrf
+    <div class="form-group">
     <label >やることを更新してください</label>
     <input type="text" name="body"class="form-control" value="{{ $todo->body }}" style="max-width:1000px;">
   </div>

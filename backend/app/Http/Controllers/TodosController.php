@@ -44,22 +44,25 @@ class TodosController extends Controller
         // データを追加したものを保存
         $todo->save();
 
-        return redirect('/todos');
+        return redirect('/');
     }
 
-    public function destroy(todo $todo) {
+    public function destroy($id) {
+        $todo = Todo::find($id);
         $todo->delete();
-        return redirect('/todos');
+        return redirect('/');
     }
 
-    public function edit(todo $todo) {
+    public function edit($id) {
+        $todo = Todo::find($id);
         return view('todos.edit')->with('todo',$todo);
     }
 
-    public function update(Request $request, todo $todo) {
+    public function update($id, Request $request) {
+        $todo = Todo::find($id);
         $todo->body = $request->body;
         $todo->save();
-        return redirect('/todos');
+        return redirect('/');
     }
 
     public function __construct()

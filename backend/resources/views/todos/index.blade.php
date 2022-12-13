@@ -36,18 +36,16 @@
     <tr>
       <td>{{$todo->body}}</td>
       <td>
-        <form action="{{route('todos.edit', $todo)}}" method="get">
-          {{ csrf_field() }}
-          {{ method_field('get') }}
+        <form action="{{route('todos.edit', $todo->id) }}" method="get">
+          @csrf
           <button type="submit" class="btn btn-primary">編集</button>
         </form>
       </td>
 
       <!-- 削除ボタン -->
-      <td><form action="{{url('/todos', $todo)}}" method="post">
-          {{ csrf_field() }}
-          {{ method_field('delete') }}
-          <button type="submit" class="btn btn-danger">削除</button>
+      <td><form action="{{route('todos.destroy', $todo->id)}}" method="post">
+        @csrf
+      <button type="submit" class="btn btn-danger">削除</button>
       </form>
       </td>
 
